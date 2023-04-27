@@ -4,10 +4,10 @@ import Express from "express";
 const app = Express()
 
 app.get("/products", async (req, res) => {
-    const idQuery = req.query.id
-    if (idQuery) {
+    const limitQuery = req.query.limit
+    if (limitQuery) {
         const arrayProd = await productos.getProducts()
-        const newArray = arrayProd.slice(0, idQuery)
+        const newArray = arrayProd.slice(0, limitQuery)
         res.json(newArray)
     } else {
         res.json(await productos.getProducts())
